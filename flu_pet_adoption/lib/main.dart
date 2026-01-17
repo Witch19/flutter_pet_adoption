@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
-import 'features/auth/login_screen.dart';
-import 'features/auth/register_screen.dart';
-import 'features/home/home_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'features/navigation/bottom_nav_screen.dart';
+import 'providers/auth_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,11 +23,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pet Adoption',
-      initialRoute: '/home',
-      routes: {
-        '/register': (context) => const RegisterScreen(),
-        '/home': (context) => HomeScreen(),
-      },
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        useMaterial3: true,
+      ),
+      home: const BottomNavScreen(),
     );
   }
 }
