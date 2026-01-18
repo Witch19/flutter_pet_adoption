@@ -154,8 +154,7 @@ class HomeScreen extends StatelessWidget {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: 4,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(width: 12),
+                      separatorBuilder: (_, __) => const SizedBox(width: 12),
                       itemBuilder: (context, index) {
                         final images = [
                           'assets/images/dogs/perro1.png',
@@ -166,14 +165,11 @@ class HomeScreen extends StatelessWidget {
 
                         return Container(
                           decoration: BoxDecoration(
-                            color:
-                                AppColors.primaryPink.withOpacity(0.15),
-                            borderRadius:
-                                BorderRadius.circular(16),
+                            color: AppColors.primaryPink.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           child: ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(16),
                             child: Image.asset(
                               images[index],
                               width: 120,
@@ -219,12 +215,7 @@ class _RefugioCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageWidget = ClipRRect(
       borderRadius: BorderRadius.circular(16),
-      child: Image.asset(
-        imagePath,
-        width: 120,
-        height: 120,
-        fit: BoxFit.cover,
-      ),
+      child: Image.asset(imagePath, width: 120, height: 120, fit: BoxFit.cover),
     );
 
     final textWidget = Expanded(
@@ -263,21 +254,6 @@ class _RefugioCard extends StatelessWidget {
         children: imageRight
             ? [textWidget, imageWidget]
             : [imageWidget, textWidget],
-      ),
-    );
-  }
-}
-import 'package:flutter/material.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Pet Adoption Home")),
-      body: const Center(
-        child: Text("Bienvenido a Pet Adoption"),
       ),
     );
   }
