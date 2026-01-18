@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flu_pet_adoption/navigation/btn_nav.dart';
+import 'package:provider/provider.dart';
+
+import 'features/navigation/bottom_nav_screen.dart';
+import 'providers/auth_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,6 +23,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pet Adoption',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        useMaterial3: true,
+      ),
       home: const BottomNavScreen(),
     );
   }
